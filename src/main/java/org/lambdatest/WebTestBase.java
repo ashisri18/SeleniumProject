@@ -2,6 +2,7 @@ package org.lambdatest;
 
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -31,7 +32,8 @@ public class WebTestBase {
             EdgeOptions options = new EdgeOptions();
             options.merge(cap);
         }
-        driver.set(new RemoteWebDriver(new URL("http://localhost:4444"), cap ));
+//        driver.set(new RemoteWebDriver(new URL("http://localhost:4444"), cap ));
+        driver.set(new ChromeDriver());
         getDriver().get("https://www.lambdatest.com/selenium-playground/");
         getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         getDriver().manage().window().maximize();
