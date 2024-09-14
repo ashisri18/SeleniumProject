@@ -28,12 +28,12 @@ public class WebTestBase {
             cap.setPlatform(Platform.ANY);
             cap.setBrowserName("chrome");
             chromeOptions = new ChromeOptions();
-            chromeOptions.addArguments("--headless");
+            /*chromeOptions.addArguments("--headless");
             chromeOptions.addArguments("--disable-gpu");
-            chromeOptions.addArguments("--no-sandbox");
+            chromeOptions.addArguments("--no-sandbox");*/
             chromeOptions.merge(cap);
             cap.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
-            driver.set(new ChromeDriver(chromeOptions));
+//            driver.set(new ChromeDriver(chromeOptions));
 //            driver.set(new ChromeDriver());
         } else if (browserName.equalsIgnoreCase("Edge")) {
             cap.setPlatform(Platform.ANY);
@@ -44,9 +44,9 @@ public class WebTestBase {
             edgeOptions.addArguments("--no-sandbox");
             edgeOptions.merge(cap);
             cap.setCapability(EdgeOptions.CAPABILITY, edgeOptions);
-            driver.set(new EdgeDriver(edgeOptions));
+//            driver.set(new EdgeDriver(edgeOptions));
         }
-//        driver.set(new RemoteWebDriver(new URL("http://localhost:4444"), cap));
+        driver.set(new RemoteWebDriver(new URL("http://localhost:4444"), cap));
 //        driver.set(new ChromeDriver());
         getDriver().get("https://www.lambdatest.com/selenium-playground/");
         getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
