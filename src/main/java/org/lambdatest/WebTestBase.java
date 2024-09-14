@@ -33,8 +33,8 @@ public class WebTestBase {
             chromeOptions.addArguments("--no-sandbox");
             chromeOptions.merge(cap);
             cap.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
-//            driver.set(new ChromeDriver(chromeOptions));
-            driver.set(new ChromeDriver());
+            driver.set(new ChromeDriver(chromeOptions));
+//            driver.set(new ChromeDriver());
         } else if (browserName.equalsIgnoreCase("Edge")) {
             cap.setPlatform(Platform.ANY);
             cap.setBrowserName("MicrosoftEdge");
