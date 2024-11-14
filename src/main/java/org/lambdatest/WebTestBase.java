@@ -16,7 +16,7 @@ import java.time.Duration;
 
 public class WebTestBase {
 
-    ThreadLocal<RemoteWebDriver> driver = new ThreadLocal<>();
+    static ThreadLocal<RemoteWebDriver> driver = new ThreadLocal<>();
     public DesiredCapabilities cap = new DesiredCapabilities();
 
     @Parameters({"browserName"})
@@ -28,12 +28,12 @@ public class WebTestBase {
             cap.setPlatform(Platform.ANY);
             cap.setBrowserName("chrome");
             chromeOptions = new ChromeOptions();
-            /*chromeOptions.addArguments("--headless");
+            chromeOptions.addArguments("--headless");
             chromeOptions.addArguments("--disable-gpu");
-            chromeOptions.addArguments("--no-sandbox");*/
+            chromeOptions.addArguments("--no-sandbox");
             chromeOptions.merge(cap);
             cap.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
-//            driver.set(new ChromeDriver(chromeOptions));
+            driver.set(new ChromeDriver(chromeOptions));
 //            driver.set(new ChromeDriver());
         } else if (browserName.equalsIgnoreCase("Edge")) {
             cap.setPlatform(Platform.ANY);
@@ -45,8 +45,11 @@ public class WebTestBase {
             edgeOptions.merge(cap);
             cap.setCapability(EdgeOptions.CAPABILITY, edgeOptions);
 //            driver.set(new EdgeDriver(edgeOptions));
+            driver.set(new EdgeDriver());
         }
-        driver.set(new RemoteWebDriver(new URL("http://localhost:4444"), cap));
+//        Execution on K8s ---
+//        driver.set(new RemoteWebDriver(new URL("http://127.0.0.1:54749/"), cap));
+//        driver.set(new RemoteWebDriver(new URL("http://localhost:4444"), cap));
 //        driver.set(new ChromeDriver());
         getDriver().get("https://www.lambdatest.com/selenium-playground/");
         getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
@@ -55,7 +58,7 @@ public class WebTestBase {
         System.out.println(browserName+"@"+getDriver()+": Web Page: "+ pageTitle+" launch successfully...");
     }
 
-    public RemoteWebDriver getDriver(){
+    public static RemoteWebDriver getDriver(){
         return driver.get();
     }
 

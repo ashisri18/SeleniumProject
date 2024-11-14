@@ -5,6 +5,7 @@
         <parameter name="browserName" value="Edge"/>
         <classes>
             <class name="org.lambdatest.SampleTest"/>
+            <class name="org.lambdatest.AdvancedConcepts"/>
         </classes>
     </test>
 </suite>

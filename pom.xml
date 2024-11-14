@@ -24,6 +24,13 @@
       <version>4.23.0</version>
     </dependency>
 
+    <!-- https://mvnrepository.com/artifact/io.appium/java-client -->
+    <dependency>
+      <groupId>io.appium</groupId>
+      <artifactId>java-client</artifactId>
+      <version>9.3.0</version>
+    </dependency>
+
     <!-- https://mvnrepository.com/artifact/org.testng/testng -->
     <dependency>
       <groupId>org.testng</groupId>

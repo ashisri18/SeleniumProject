@@ -28,6 +28,9 @@ public class SeleniumPlayground {
     @FindBy(xpath = "//section/div[@class='container__selenium']/ul/li/a")
     List<WebElement> lst_lnk_playgroundItems;
 
+    @FindBy(linkText = "iFrame Demo")
+    WebElement lnk_iFrameDemo;
+
     public SeleniumPlayground verifyHomePage(){
         Assert.assertTrue(hdg_lambdaTest.isDisplayed(), "Selenium Playground home page NOT validated");
         return this;
@@ -47,6 +50,10 @@ public class SeleniumPlayground {
         for(WebElement playgroundItem : lst_lnk_playgroundItems)
             System.out.println(driver+": "+playgroundItem.getText());
         return this;
+    }
+
+    public void navigateToIFrameDemo(){
+        lnk_iFrameDemo.click();
     }
 
 

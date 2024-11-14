@@ -33,7 +33,6 @@ jobs:
      # uses: browser-actions/setup-chrome@v1
 
     - name: Start Selenium docker grid setup
-      run: docker ps
       run: docker-compose -f "docker_compose.yaml" up -d
 
     - name: Build with Maven

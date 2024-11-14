@@ -1,23 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite" parallel="tests">
-    <!--<suite-files>
+    <listeners>
+        <listener class-name="utility.RetryListener"/>
+    </listeners>
+    <suite-files>
         <suite-file path="chrome_testng.xml"/>
-        <suite-file path="edge_testng.xml"/>
-    </suite-files>-->
-    <test verbose="2" preserve-order="true" name="ChromeTest1">
-        <parameter name="browserName" value="Chrome"/>
+<!--        <suite-file path="edge_testng.xml"/>-->
+    </suite-files>
+    <!--<test verbose="2" preserve-order="true" name="ChromeTest1">
+        <parameter name="platformName" value="Chrome"/>
         <classes>
-            <class name="org.lambdatest.SampleTest"/>
+&lt;!&ndash;            <class name="org.lambdatest.SampleTest"/>&ndash;&gt;
+            <class name="org.lambdatest.FactoryPatternTest"/>
         </classes>
     </test>
     <test verbose="2" preserve-order="true" name="ChromeTest2">
-        <parameter name="browserName" value="Chrome"/>
+        <parameter name="platformName" value="Edge"/>
         <classes>
-            <class name="org.lambdatest.SampleTest"/>
+&lt;!&ndash;            <class name="org.lambdatest.SampleTest"/>&ndash;&gt;
+            <class name="org.lambdatest.FactoryPatternTest"/>
         </classes>
-    </test>
-    <test verbose="2" preserve-order="true" name="ChromeTest3">
+    </test>-->
+    <!--<test verbose="2" preserve-order="true" name="ChromeTest3">
     <parameter name="browserName" value="Chrome"/>
     <classes>
         <class name="org.lambdatest.SampleTest"/>
@@ -34,5 +39,5 @@
         <classes>
             <class name="org.lambdatest.SampleTest"/>
         </classes>
-    </test>
+    </test>-->
 </suite>
