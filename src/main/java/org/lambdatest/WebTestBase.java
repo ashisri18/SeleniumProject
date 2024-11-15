@@ -35,7 +35,7 @@ public class WebTestBase {
             chromeOptions.merge(cap);
             cap.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
 //            driver.set(new ChromeDriver(chromeOptions));
-            driver.set(new ChromeDriver());
+//            driver.set(new ChromeDriver());
         } else if (browserName.equalsIgnoreCase("Edge")) {
             cap.setPlatform(Platform.ANY);
             cap.setBrowserName("MicrosoftEdge");
@@ -46,11 +46,11 @@ public class WebTestBase {
             edgeOptions.merge(cap);
             cap.setCapability(EdgeOptions.CAPABILITY, edgeOptions);
 //            driver.set(new EdgeDriver(edgeOptions));
-            driver.set(new EdgeDriver());
+//            driver.set(new EdgeDriver());
         }
 //        Execution on K8s ---
 //        driver.set(new RemoteWebDriver(new URL("http://127.0.0.1:54749/"), cap));
-//        driver.set(new RemoteWebDriver(new URL("http://localhost:4444"), cap));
+        driver.set(new RemoteWebDriver(new URL("http://localhost:4444"), cap));
 //        driver.set(new ChromeDriver());
         getDriver().get("https://www.lambdatest.com/selenium-playground/");
         getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
