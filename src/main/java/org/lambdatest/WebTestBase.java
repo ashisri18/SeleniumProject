@@ -28,13 +28,14 @@ public class WebTestBase {
             cap.setPlatform(Platform.ANY);
             cap.setBrowserName("chrome");
             chromeOptions = new ChromeOptions();
+//            chromeOptions.addArguments("--incognito");
             chromeOptions.addArguments("--headless");
             chromeOptions.addArguments("--disable-gpu");
             chromeOptions.addArguments("--no-sandbox");
             chromeOptions.merge(cap);
             cap.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
-            driver.set(new ChromeDriver(chromeOptions));
-//            driver.set(new ChromeDriver());
+//            driver.set(new ChromeDriver(chromeOptions));
+            driver.set(new ChromeDriver());
         } else if (browserName.equalsIgnoreCase("Edge")) {
             cap.setPlatform(Platform.ANY);
             cap.setBrowserName("MicrosoftEdge");

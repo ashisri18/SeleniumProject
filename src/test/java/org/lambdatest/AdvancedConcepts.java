@@ -1,5 +1,6 @@
 package org.lambdatest;
 
+import org.lambdatest.pageobject.GeolocationTesting;
 import org.lambdatest.pageobject.IFrameDemo;
 import org.lambdatest.pageobject.SeleniumPlayground;
 import org.testng.Assert;
@@ -11,9 +12,10 @@ public class AdvancedConcepts extends WebTestBase{
 
     IFrameDemo iFrameDemo;
     SeleniumPlayground seleniumPlayground;
+    GeolocationTesting geolocationTesting;
     int count;
 
-    @Test()
+    @Test(enabled = false)
     public void testSimpleIFrame(){
         iFrameDemo = new IFrameDemo(getDriver());
         iFrameDemo.openIFrameInNewTab()
@@ -21,12 +23,18 @@ public class AdvancedConcepts extends WebTestBase{
 
     }
 
-    @Test(/*retryAnalyzer = RetryAnalyzer.class*/)
+    @Test(enabled = false /*retryAnalyzer = RetryAnalyzer.class*/)
     public void reprintPlaygroundItemList(){
         seleniumPlayground = new SeleniumPlayground(getDriver());
         seleniumPlayground.printPlaygroundItemsList();
         count++;
         Assert.assertEquals(count, 2, "Execution count is not 2");
+    }
+
+    @Test(enabled = true)
+    public void testGeolocation(){
+        geolocationTesting = new GeolocationTesting(getDriver());
+        geolocationTesting.openNewTabWithDifferentGeolocation();
     }
 }
 
