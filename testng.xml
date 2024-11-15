@@ -6,7 +6,7 @@
     </listeners>
     <suite-files>
         <suite-file path="chrome_testng.xml"/>
-<!--        <suite-file path="edge_testng.xml"/>-->
+        <suite-file path="edge_testng.xml"/>
     </suite-files>
     <!--<test verbose="2" preserve-order="true" name="ChromeTest1">
         <parameter name="platformName" value="Chrome"/>
