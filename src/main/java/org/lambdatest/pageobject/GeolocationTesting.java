@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.WindowType;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chromium.ChromiumDriver;
 import org.openqa.selenium.devtools.DevTools;
 import org.openqa.selenium.devtools.v125.browser.Browser;
 import org.openqa.selenium.devtools.v125.browser.model.PermissionType;
@@ -40,17 +41,19 @@ public class GeolocationTesting {
 //        to set geolocation in new tab, first open the new tab then emulate location using dev tools
         driver.switchTo().newWindow(WindowType.TAB);
 
-//        Using Chrome Devtools Protocol(CDP)
-        devTools = ((ChromeDriver)driver).getDevTools();
-        devTools.createSession();
-        double latitude = 52.5043; // San Francisco Latitude
-        double longitude = 13.4501;
-        double accuracy = 5;
-        devTools.send(Browser.resetPermissions(Optional.empty()));
-        devTools.send(Emulation.setGeolocationOverride(
-                Optional.of(latitude),
-                Optional.of(longitude),
-                Optional.of(accuracy)));
+//        Using Chrome Devtools Protocol(CDP), Check if driver is an instanceOf ChromiumDriver(Chrome or Edge) for Selenium Grid Execution
+        if (driver instanceof ChromiumDriver) {
+            devTools = ((ChromiumDriver) driver).getDevTools();
+            devTools.createSession();
+            double latitude = 52.5043; // San Francisco Latitude
+            double longitude = 13.4501;
+            double accuracy = 5;
+            devTools.send(Browser.resetPermissions(Optional.empty()));
+            devTools.send(Emulation.setGeolocationOverride(
+                    Optional.of(latitude),
+                    Optional.of(longitude),
+                    Optional.of(accuracy)));
+        }
 
 //        Without CDP
         /*Map<String, Object> corodinate = new HashMap<>();
